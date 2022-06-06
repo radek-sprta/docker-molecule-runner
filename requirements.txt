@@ -1,3 +1,4 @@
+jsonschema  # Required by dependencies
 molecule
 molecule-azure
 molecule-containers
