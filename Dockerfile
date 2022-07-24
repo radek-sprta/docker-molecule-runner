@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 ARG VERSION=latest
 FROM alpine:$VERSION
 
@@ -23,7 +24,7 @@ RUN apk --no-cache add \
     && rm -Rf /var/cache/apk/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
 
-COPY requirements.txt /tmp/requirements.txt
+COPY --link requirements.txt /tmp/requirements.txt
 
 # Install Ansible via pip.
 RUN apk --no-cache add --virtual .build-dependencies \
