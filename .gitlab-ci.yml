@@ -17,7 +17,6 @@ image: docker:git
     matrix:
       - PLATFORM:
           - "linux/amd64"
-          - "linux/arm64"
         VERSION:
           - "latest"
 
