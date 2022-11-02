@@ -1,7 +1,7 @@
 set export
 set positional-arguments
 
-buildx-version := "0.8.2"
+buildx-version := "0.9.1"
 name := "molecule-runner"
 plugins-dir := "~/.docker/cli-plugins"
 
