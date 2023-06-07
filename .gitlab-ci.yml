@@ -24,6 +24,11 @@ variables:
 build:
   extends:
     - .matrix
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - Dockerfile
+      - requirements.txt
   stage: build
   script:
     - just build "${VERSION}" "linux/amd64" "local"
