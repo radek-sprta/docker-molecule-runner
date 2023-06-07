@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.title="rsprta/molecule-runner"
 LABEL org.opencontainers.image.url="https://gitlab.com/radek-sprta/docker-molecule-runner"
 
 # Install dependencies.
-RUN apk --no-cache add \
+RUN apk --no-cache --upgrade add \
        ansible \
        ansible-lint \
        docker \
