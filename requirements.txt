@@ -14,3 +14,4 @@ molecule-openstack
 molecule-podman
 molecule-vagrant
 openstacksdk
+pyyaml!=6.0.0,!=5.4.0,!=5.4.1  # pyyaml is broken with cython 3
