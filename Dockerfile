@@ -26,15 +26,17 @@ RUN apk --no-cache --upgrade add \
 
 COPY --link requirements.txt /tmp/requirements.txt
 
-# Install Ansible via pip.
+# Install Ansible dependencies with Cython workaround:
+# Link: https://stackoverflow.com/questions/77490435/attributeerror-cython-sources
 RUN apk --no-cache add --virtual .build-dependencies \
        build-base \
        libxml2-dev \
        libxslt-dev \
        linux-headers \
        python3-dev \
-    && pip3 install -r /tmp/requirements.txt --break-system-packages \
-    && rm /tmp/requirements.txt \
+    && echo "cython<3" > /tmp/constraint.txt \
+    && PIP_CONSTRAINT=/tmp/constraint.txt pip3 install -r /tmp/requirements.txt --break-system-packages \
+    && rm /tmp/constraint.txt /tmp/requirements.txt \
     && apk del .build-dependencies
 
 ENV SHELL /bin/sh
