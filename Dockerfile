@@ -32,9 +32,8 @@ RUN apk --no-cache add --virtual .build-dependencies \
        libxslt-dev \
        linux-headers \
        python3-dev \
-    && echo "cython<3" > /tmp/constraint.txt \
-    && PIP_CONSTRAINT=/tmp/constraint.txt pip3 install -r /tmp/requirements.txt \
-    && rm /tmp/constraint.txt /tmp/requirements.txt \
+    && pip3 install -r /tmp/requirements.txt \
+    && rm /tmp/requirements.txt \
     && apk del .build-dependencies
 
 ENV SHELL /bin/sh
