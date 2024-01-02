@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
-ARG VERSION=latest
-FROM alpine:$VERSION
+ARG VERSION=3-alpine
+FROM python:$VERSION
 
 LABEL maintainer="Radek Sprta <mail@radeksprta.eu>"
 LABEL org.opencontainers.image.authors="Radek Sprta <mail@radeksprta.eu>"
@@ -18,8 +18,6 @@ RUN apk --no-cache --upgrade add \
        docker \
        git \
        podman \
-       py3-pip \
-       python3 \
        yamllint \
     && rm -Rf /var/cache/apk/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
@@ -42,3 +40,5 @@ RUN apk --no-cache add --virtual .build-dependencies \
 ENV SHELL /bin/sh
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV ANSIBLE_FORCE_COLOR=1
+
+CMD ["/bin/sh"]
