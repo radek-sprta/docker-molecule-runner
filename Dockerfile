@@ -33,7 +33,7 @@ RUN apk --no-cache add --virtual .build-dependencies \
        libxslt-dev \
        linux-headers \
        python3-dev \
-    && pip3 install -r /tmp/requirements.txt \
+    && pip3 install -r /tmp/requirements.txt --break-system-packages \
     && rm /tmp/requirements.txt \
     && apk del .build-dependencies
 
